@@ -1,0 +1,17 @@
+name: websocket-server
+recipe: mean
+config:
+  webroot: ./dist
+services:
+  appserver:
+    portforward: true
+    extras:
+      - apt-get update && apt-get install -y net-tools
+    overrides:
+      ports:
+        - "4444:4444"
+    ssl: true
+    config:
+      ssl: 
+        cert: ~/.lando/certs/cert.crt
+        key: ~/.lando/certs/cert.pem
